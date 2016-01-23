@@ -9,20 +9,30 @@ import matplotlib.pyplot as plt
 
 class GrapMinder(object):
 
-
-    def __init__():
+    #classe inicial
+    def __init__():# esse parenteses e o construtor
+        #abrir arquivos
+        #Comando open com 'r' de reader
         dataset_1 = open('indicator hiv estimated prevalence% 15-49.csv','r')
         dataset_2 = open('cell phone total.csv','r')
+        #instancia da classe plotar, objeto pl
         pl = plotar()
 
+        #fechar os arquivos ;)
+        dataset_1.close()
+        dataset_2.close()
 
 
-
-
-
+"""
+Essa classe vai ser os tratamento dos dados
+ela deve retornar eles tratados para a classe inicial
+e la se plota o grafico bonitinho
+"""
 class Tratamento(object):
     pass
 
+
+#nessa classe onde vai ser plotado o grafico
 class Plotar(object):
     N = 50
     x = np.random.rand(N)
