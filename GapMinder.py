@@ -6,21 +6,24 @@ Created on Fri Jan 22 04:28:50 2016
 """
 import numpy as np
 import matplotlib.pyplot as plt
-
+import csv
 class GrapMinder(object):
 
     #classe inicial
     def __init__():# esse parenteses e o construtor
-        #abrir arquivos
-        #Comando open com 'r' de reader
-        dataset_1 = open('indicator hiv estimated prevalence% 15-49.csv','r')
-        dataset_2 = open('cell phone total.csv','r')
-        #instancia da classe plotar, objeto pl
-        pl = plotar()
-
-        #fechar os arquivos ;)
-        dataset_1.close()
-        dataset_2.close()
+ 		lista1 = []
+ 		lista2 = []
+ 		#transforma cada linha em uma string e salva tudo em uma lista_1 e Lista_2
+		with open ( 'indicator hiv estimated prevalence% 15-49.csv' , 'rb' ) as csvfile :
+			spamreader = csv . reader ( csvfile , delimiter = ' ' , quotechar = '|' )
+			for row in spamreader :
+				 lista1.append(', ' . join ( row ))    
+        
+		with open ( 'cell phone total.csv' , 'rb' ) as csvfile_2 :
+			spamreader_1 = csv . reader ( csvfile_2 , delimiter = ' ' , quotechar = '|' )
+			for I in spamreader_1 :
+				 lista2.append(', ' . join ( I ))
+		plotar().show()
 
 
 """
@@ -41,4 +44,4 @@ class Plotar(object):
     area = np.pi * (15 * np.random.rand(N))**2  # 0 to 15 point radiuses
 
     plt.scatter(x, y, s=area, c=colors, alpha=0.5)
-    plt.show()
+    #plt.show()
