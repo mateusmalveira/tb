@@ -11,19 +11,19 @@ class GrapMinder(object):
 
     #classe inicial
     def __init__():# esse parenteses e o construtor
- 	lista1 = []
- 	lista2 = []
- 	#transforma cada linha em uma string e salva tudo em uma lista_1 e Lista_2
-	with open ( 'indicator hiv estimated prevalence% 15-49.csv' , 'rb' ) as csvfile :
-		spamreader = csv . reader ( csvfile , delimiter = ' ' , quotechar = '|' )
-		for row in spamreader :
-			lista1.append(', ' . join ( row ))    
-        
-	with open ( 'cell phone total.csv' , 'rb' ) as csvfile_2 :
-		spamreader_1 = csv . reader ( csvfile_2 , delimiter = ' ' , quotechar = '|' )
-		for I in spamreader_1 :
-			 lista2.append(', ' . join ( I ))
-	plotar().show()
+     	lista1 = []
+     	lista2 = []
+     	#transforma cada linha em uma string e salva tudo em uma lista_1 e Lista_2
+    	with open ( 'indicator hiv estimated prevalence% 15-49.csv' , 'rb' ) as csvfile :
+    		spamreader = csv . reader ( csvfile , delimiter = ' ' , quotechar = '|' )
+    		for row in spamreader :
+    			lista1.append(', ' . join ( row ))
+
+    	with open ( 'cell phone total.csv' , 'rb' ) as csvfile_2 :
+    		spamreader_1 = csv . reader ( csvfile_2 , delimiter = ' ' , quotechar = '|' )
+    		for I in spamreader_1 :
+    			 lista2.append(', ' . join ( I ))
+    	plotar().show()
 
 
 """
