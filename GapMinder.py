@@ -35,20 +35,31 @@ class Tratamento(object):
 			Anos_1 = []
 			Pais_ST_0 = []
 			Pais_ST_1 = []
-			
 			#fatia a primeira camada Titulo e Anos
 			for i in range(len(a)):
+				Tratamento_1 = []
 				if i == 0 :
 					Anos_0.append(a[i].split(','))
 				if i != 0 :
-					Pais_ST_0.append(a[i])
+					Tratamento_1.append(a[i])
+					for i in range(len(Tratamento_1)):
+						Pais_ST_0.append(Tratamento_1[i].split(','))
 
 			for i in range(len(b)):
+				Tratamento = []
 				if i == 0 :
 					Anos_1.append(b[i].split(','))
 				if i != 0 :
-					Pais_ST_1.append(a[i])
+					Tratamento.append(b[i])
+					for i in range(len(Tratamento)):
+						Pais_ST_1.append(Tratamento[i].split(','))
 			
+			print('Titulo do primeiro arquivo: ',Anos_0[0][0])
+			print('Titulo do segundo arquivo: ',Anos_1[0][0] )
+			
+			for i in range(len(Pais_ST_1)):
+				print(Pais_ST_1[i][0])
+				
 
 
 
