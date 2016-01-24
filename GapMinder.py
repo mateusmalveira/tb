@@ -31,22 +31,26 @@ class Inicio(object):
 #tratamento dos dados
 class Tratamento(object):
 		def __init__(self,a,b):
-			indices_a = []
-			indices_b = []
-			self.a = a
-			self.b = b
+			Anos_0 = []
+			Anos_1 = []
+			Pais_ST_0 = []
+			Pais_ST_1 = []
+			
 			#fatia a primeira camada Titulo e Anos
 			for i in range(len(a)):
 				if i == 0 :
-					indices_a.append(a[i])
-					
+					Anos_0.append(a[i].split(','))
+				if i != 0 :
+					Pais_ST_0.append(a[i])
+
 			for i in range(len(b)):
 				if i == 0 :
-					indices_b.append(b[i])
+					Anos_1.append(b[i].split(','))
+				if i != 0 :
+					Pais_ST_1.append(a[i])
 			
-			print(indices_a)
-			print(indices_b)
-			Plotar()
+
+
 
 
 
