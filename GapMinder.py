@@ -53,29 +53,29 @@ class Tratamento(object):
 					Tratamento.append(b[i])
 					for i in range(len(Tratamento)):
 						Pais_ST_1.append(Tratamento[i].split(','))
-			
-			print('Titulo do primeiro arquivo: ',Anos_0[0][0])
-			print('Titulo do segundo arquivo: ',Anos_1[0][0] )
-			
-			for i in range(len(Pais_ST_1)):
-				print(Pais_ST_1[i][0])
-				
+
+			Cort = Corte()
+			titulo,anos = Cort.titulo(Anos_0)
+			titulo1,anos1 = Cort.titulo(Anos_1)
+			paises,St = Cort.Pais(Pais_ST_0)
+			paises1,St1 = Cort.Pais(Pais_ST_1)
+			print anos
+			print St[1]
 
 
 
+class Corte():
+    def titulo(self,a):
+		x = a
+		Titulos = x[0].pop(0)
+		return Titulos,x
+    def Pais(self,b):
+        Paises = []
+        z = b
+        for I in range(len(z)):
+            Paises.append(z[I].pop(0))
+        return Paises,z
 
 
-
-#nessa classe onde vai ser plotado o grafico
-class Plotar():
-	def __init__(self):# esse parenteses e o construtor
-		N = 50
-		x = np.random.rand(N)
-		y = np.random.rand(N)
-		colors = np.random.rand(N)
-		area = np.pi * (15 * np.random.rand(N))**2  # 0 to 15 point radiuses
-
-		plt.scatter(x, y, s=area, c=colors, alpha=0.5)
-		plt.show()
 
 Inicio()
