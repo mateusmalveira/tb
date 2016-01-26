@@ -26,10 +26,13 @@ class Inicio(object):
         Tratamento(__lista1,__lista2)
 
 
-
 #tratamento dos dados
 class Tratamento(object):
 	def __init__(self,a,b):
+		"""
+
+		:rtype: object
+		"""
 		Anos_0 = []
 		Anos_1 = []
 		Pais_ST_0 = []
@@ -53,15 +56,17 @@ class Tratamento(object):
 				for i in range(len(Tratamento)):
 					Pais_ST_1.append(Tratamento[i].split(','))
 
+		
 		Cort = Corte()
 		titulo,anos = Cort.titulo(Anos_0)
 		titulo1,anos1 = Cort.titulo(Anos_1)
 		paises,St = Cort.Pais(Pais_ST_0)
 		paises1,St1 = Cort.Pais(Pais_ST_1)
-		print(paises)
-        
+		
+		Garfico1 = Plotar(titulo,anos,paises,St)
+		Garfico2 = Plotar(titulo1,anos1,paises1,St1)
 
-
+#corte das listas		
 class Corte():
     def titulo(self,a):
 		x = a
@@ -74,9 +79,18 @@ class Corte():
             Paises.append(z[I].pop(0))
         return Paises,z
 
-class Plotar():
-    def __int_(T,A,P,S):
-        pass
 
+class Plotar():
+    def __init__(self,T,A,P,S):
+		x = [100]
+		print A
+		y = A
+		plt.title(T)
+		plt.plot(x,y)
+		plt.ylabel("Anos")
+		
+		plt.grid(False)
+		plt.show()
+		
 
 Inicio()
