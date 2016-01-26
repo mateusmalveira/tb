@@ -57,17 +57,17 @@ class Tratamento(object):
 				for i in range(len(Tratamento)):
 					Pais_ST_1.append(Tratamento[i].split(','))
 
-		
+
 		Cort = Corte()
 		titulo,anos = Cort.titulo(Anos_0)
 		titulo1,anos1 = Cort.titulo(Anos_1)
 		paises,St = Cort.Pais(Pais_ST_0)
 		paises1,St1 = Cort.Pais(Pais_ST_1)
-		
+
 		Garfico1 = Plotar(titulo,anos,paises,St)
 		Garfico2 = Plotar(titulo1,anos1,paises1,St1)
 
-#corte das listas		
+#corte das listas
 class Corte():
     def titulo(self,a):
 		x = a
@@ -83,40 +83,36 @@ class Corte():
 
 class Plotar():
     def __init__(self,T,A,P,S):
-		def _update_plot(i, fig, scat): 
-			scat.set_offsets(([0, i],[50, i],[100, i]))
+		def _update_plot(i, fig, scat):
+			scat.set_offsets(([300, i],[250, i],[2100, i]))
 			print('Frames: %d' %i)
 
 			return scat,
 
-		fig =  plt.figure()                
-		x = []
-		y = []
-		
-		print S[4][0:4]
-
+		fig =  plt.figure()
+		x = [1,2,3,4]
+		y = [0,0,0,0]
+		b = A[0][0]
+		bc = A[0][len(A[0])-1]
+		print bc
+		b = int(b)
+		bc = int(bc)
 		ax = fig.add_subplot(111)
 		ax.grid(True, linestyle = '-', color = '0.75')
-		ax.set_xlim([-50, 200])
-		ax.set_ylim([-50, 200])
+		ax.set_xlim([0 , 1000])
+		ax.set_ylim([b , bc])
 
 		#instancia do grafico Dispersão
 		scat = plt.scatter(x, y, c = x)
+		
+		plt.title(T)
+		plt.ylabel("Anos")
 		#seta alpha
 		scat.set_alpha(0.8)
-		#instancia da função animação recebe uma instancia de figura,uma instancia do grafico, 
-		anim = animation.FuncAnimation(fig, _update_plot, fargs = (fig, scat),
-									   frames = 100, interval = 100)
-					  
-		plt.show()
-		"""x = len(P)
-		y = A
-		plt.title(T)
-		plt.plot(x,y)
-		plt.ylabel("Anos")
-		
 		plt.grid(False)
+		#instancia da função animação recebe uma instancia de figura,uma instancia do grafico,
+		anim = animation.FuncAnimation(fig, _update_plot, fargs = (fig, scat),frames = 100, interval = 100)
+		#Mostra o Grafico
 		plt.show()
-		"""
 
 Inicio()
