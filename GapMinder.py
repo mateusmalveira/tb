@@ -6,6 +6,7 @@ Created on Fri Jan 22 04:28:50 2016
 """
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.animation as animation
 import csv
 #classe inscial
 class Inicio(object):
@@ -82,8 +83,33 @@ class Corte():
 
 class Plotar():
     def __init__(self,T,A,P,S):
-		x = [100]
-		print A
+		def _update_plot(i, fig, scat): 
+			scat.set_offsets(([0, i],[50, i],[100, i]))
+			print('Frames: %d' %i)
+
+			return scat,
+
+		fig =  plt.figure()                
+		x = []
+		y = []
+		
+		print S[4][0:4]
+
+		ax = fig.add_subplot(111)
+		ax.grid(True, linestyle = '-', color = '0.75')
+		ax.set_xlim([-50, 200])
+		ax.set_ylim([-50, 200])
+
+		#instancia do grafico Dispersão
+		scat = plt.scatter(x, y, c = x)
+		#seta alpha
+		scat.set_alpha(0.8)
+		#instancia da função animação recebe uma instancia de figura,uma instancia do grafico, 
+		anim = animation.FuncAnimation(fig, _update_plot, fargs = (fig, scat),
+									   frames = 100, interval = 100)
+					  
+		plt.show()
+		"""x = len(P)
 		y = A
 		plt.title(T)
 		plt.plot(x,y)
@@ -91,6 +117,6 @@ class Plotar():
 		
 		plt.grid(False)
 		plt.show()
-		
+		"""
 
 Inicio()
