@@ -83,35 +83,43 @@ class Corte():
 
 class Plotar():
     def __init__(self,T,A,P,S):
-		def _update_plot(i, fig, scat):
-			scat.set_offsets(([300, i],[250, i],[2100, i]))
-			print('Frames: %d' %i)
-
-			return scat,
-
+		#instancia de pyplot.figure
 		fig =  plt.figure()
-		x = [1,2,3,4]
-		y = [0,0,0,0]
+		#esqueci pra que serve so sei que era importante
+		x = [2009, 2010, 2011]
+		y = [0,0,0]
+		
+		#pega o primero ano
 		b = A[0][0]
+		#pega o ultimo ano
 		bc = A[0][len(A[0])-1]
-		print bc
+		
+		#converte pra inteiro 
 		b = int(b)
 		bc = int(bc)
+		
+		#define o tamanho do grafico na verdade adiciona um sube grafico ao grafico e da o tamanho do mesmo
 		ax = fig.add_subplot(111)
-		ax.grid(True, linestyle = '-', color = '0.75')
-		ax.set_xlim([0 , 1000])
-		ax.set_ylim([b , bc])
+		ax.grid(True, linestyle = '-', color = '0.75') #seta a grade
+		ax.set_xlim([b , bc ])# limites em x
+		ax.set_ylim([0 , 100 ])# limites e y
+		#define função _update_plot responsavel por adicionar as bolas e printar os frames retorna uma instancia do grafico de disperção
+		def _update_plot(i, fig, scat):
+			scat.set_offsets(([1980, i],[1985, i],[1990, i],[1995, i],[2000, i],[2005 ,i],[2010, i]))# seta a linha em x que a bola vai trilhar e cria as bolas
+			print('Frames: %d' %i)
+			return scat,
 
 		#instancia do grafico Dispersão
-		scat = plt.scatter(x, y, c = x)
-		
+		scat = plt.scatter(x, y, s = 2000 , c = x)
+		#seta titulo e nome do x 
 		plt.title(T)
-		plt.ylabel("Anos")
-		#seta alpha
-		scat.set_alpha(0.8)
-		plt.grid(False)
-		#instancia da função animação recebe uma instancia de figura,uma instancia do grafico,
-		anim = animation.FuncAnimation(fig, _update_plot, fargs = (fig, scat),frames = 100, interval = 100)
+		plt.xlabel("Anos")
+		
+		scat.set_alpha(0.8) #seta alpha
+		
+		#instancia da função animação recebe uma instancia de figura,uma instancia do grafico, aumentando o numero de frames, é mostrado mais grafico
+		#só que devese diminuir mt o intervalo ou o grafico ica muito lento 
+		anim = animation.FuncAnimation(fig, _update_plot, fargs = (fig, scat),frames = 60000, )
 		#Mostra o Grafico
 		plt.show()
 
